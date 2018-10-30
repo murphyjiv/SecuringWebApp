@@ -3,6 +3,117 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Spring Security Example </title>
+	   <style>
+	   		body{
+				background-color: #232323;
+			}
+			h2{
+				padding: 0px;
+				margin: 0px;
+			}
+	   		#loginContainer{
+				width: 400px;
+				height: 380px;
+				border-style: outset;
+				position: absolute;
+				font-family: sans-serif;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+				padding: 20px 20px;
+				background-color: #2A2D37;
+				border-color: #2A2D37;
+				box-shadow: 20px 20px 20px black;
+				border-radius: 20px;
+			}
+			#companyLogo{
+				width: 100%;
+				position: relative;
+				max-height: 100px;
+				max-width: 350px;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				width: auto;
+				height: auto;
+			}
+			#loginGreeter{
+
+				font-size: 20px;
+             		margin : 0 auto;
+				text-align: center;
+				color: #FFFFFF;
+				position: relative;
+				top: 20px;
+			}
+			#usernameInput, #passwordInput{
+				color: #A5A7B1;
+				font-size: 20px;
+				position: relative;
+             		display: block;
+             		margin : 0 auto;
+				width: 100%;
+				left: px;
+				height: 40px;
+				background-color: #23262E;
+				border-style: none;
+				text-align: left;
+				text-indent: 35px;
+				box-shadow: 5px 5px 5px black;
+			}
+			#userImg{
+				width: 30px;
+				position: relative;
+				top: 42px;
+				z-index: 2;
+			}
+			#usernameInput{
+			}
+			#passwordInput{
+				top: 15px;
+
+			}
+			#lockImg{
+				width: 17px;
+				position: relative;
+				top: 48px;
+				left: 7px;
+				z-index: 2;
+
+			}
+			#showPasswordButton{
+				position: relative;
+				top: 50px;
+				color: FFFFFF;
+
+			}
+			#showPassIcon{
+				width: 30px;
+				position: relative;
+				bottom: 22px;
+				left: 350px;
+				z-index: 2;
+				filter: brightness(0) invert(1);
+			}
+			#signInButton{
+				position: relative;
+				box-shadow: 5px 5px 5px black;
+				font-size: 20px;
+				color: #FFFFFF;
+				height: 40px;
+				width: 100%;
+				top: 18px;
+				margin: 0 auto;
+				background: #4F69D0;
+				border-color: #4F69D0;
+			}
+			#signInButton:hover{
+				background: #00008B;
+				border-color: 	#00008B;
+			}
+	   </style>
     </head>
     <body>
         <div th:if="${param.error}">
@@ -11,10 +122,32 @@
         <div th:if="${param.logout}">
             You have been logged out.
         </div>
-        <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
-        </form>
+	   <div id="loginContainer">
+	        <form th:action="@{/login}" method="post">
+
+			   	  <div><image src="resources/static/images/jgLogo.png" id="companyLogo"></div>
+
+			   	  <div id="loginGreeter"><h2>LOG IN</h2></div>
+
+		            <div><label><img id="userImg" src="user.png"><input id="usernameInput" placeholder="Username" type="text" name="username"/> </label></div>
+
+		            <div><label><img id="lockImg" src="lock.png"><input id="passwordInput" placeholder="Password" type="password" name="password"/><img id="showPassIcon" onclick="showPassword()" src="noPassword.png"></div>
+
+		            <div><input id ="signInButton" type="submit" value="SIGN IN"/></div>
+		   </form>
+		   <script>
+		   function showPassword() {
+		       var x = document.getElementById("passwordInput");
+		       if (x.type === "password") {
+		           x.type = "text";
+				 document.getElementById('showPassIcon').src='showPassword.png'
+		       } else {
+		           x.type = "password";
+				 document.getElementById('showPassIcon').src='noPassword.png'
+		       }
+		   }
+		   </script>
+	  </div>
+
     </body>
 </html>
