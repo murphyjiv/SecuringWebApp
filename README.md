@@ -4,7 +4,7 @@ This is a basic Sring Boot application that demonstrates how to override the def
 
 ## Run the App
 
-Start the application with gradle and then navigate to [http://localhost:8080](http://localhost:8080){:target="_blank"}.
+Start the application with gradle and then navigate to [http://localhost:8080](http://localhost:8080).
 
 ```bash
 $ gradle bootRun
